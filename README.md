@@ -1,15 +1,17 @@
 # Contribution [#]: [Issue Title]
 
 **Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
-
+**Student:** Rishi Shah
+**Issue:** [\[GitHub issue link\]  ](https://github.com/apache/opendal/issues/5419)
+**Status:** Phase 1 Complete
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+The Memcached TLS issue in Apache OpenDAL caught my attention because it sits at the intersection of two things I've been working on directly: distributed infrastructure and security. At Apple this summer, I'm implementing end-to-end encryption across a distributed, privacy-forward pipeline — including TLS, replay attack prevention, and DDoS mitigation. The core problem here, that OpenDAL's Memcached service connects over plain TCP while AWS ElastiCache serverless requires TLS, is exactly the class of security gap I've been thinking about professionally. The maintainer's design direction is also already clear from the stale PR review: refactor Connection to be generic over IO: AsyncRead + AsyncWrite so both TCP and TLS streams flow through the same protocol implementation, and use rustls_native_certs to load system certificates by default. I 
+understand what needs to be built and why.
+
+The other honest reason I chose this issue is that it gives me a forcing function to learn Rust. I've worked across Python, Java, Kotlin, and TypeScript, but Rust has stayed on my list. The scope here is narrow enough — three files, one generic refactor, one new Docker Compose fixture — that it's learnable without being overwhelming, and the patterns involved (async traits, generic bounds, TLS handshakes) are transferable to systems work I'll keep doing. OpenDAL is also a genuinely serious project used in production at companies like Databend and RisingWave, so a merged contribution here means something beyond a class assignment.
 
 ---
 
